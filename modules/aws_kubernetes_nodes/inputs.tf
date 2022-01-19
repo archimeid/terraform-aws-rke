@@ -8,6 +8,10 @@ variable "vpc_cidr_block" {
   default = "10.0.0.0/16"
 }
 
+variable "domain_name" {
+  type = string
+}
+
 locals {
   subnets_cidr_block = cidrsubnets(var.vpc_cidr_block, 8, 8, 8, 8)
   public_subnet1_cidr_block = local.subnets_cidr_block[0]

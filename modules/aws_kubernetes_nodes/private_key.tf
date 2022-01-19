@@ -11,4 +11,5 @@ resource "aws_key_pair" "k8s" {
 resource "local_file" "k8s-private-key" {
   content = tls_private_key.k8s.private_key_pem
   filename = "${path.root}/generated/k8s_private_key"
+  file_permission = "0400"
 }

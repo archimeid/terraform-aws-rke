@@ -62,3 +62,27 @@ resource "aws_subnet" "private_subnet_2" {
     Name = "private-subnet-2"
   }
 }
+
+resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_vpc.kubernetes.id
+
+  tags = {
+    Name = "k8s-ig"
+  }
+}
+
+resource "aws_default_route_table" "kubernetes" {
+  default_route_table_id = aws_vpc.kubernetes.default_route_table_id
+
+  # Allow outgoing traffic through Internet Gateway
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.gw.id
+  }
+
+  # local route is automatically created
+
+  tags = {
+    Name = "k8s-rt"
+  }
+}

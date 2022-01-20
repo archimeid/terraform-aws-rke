@@ -1,7 +1,3 @@
-data "aws_ssm_parameter" "amazon_linux_arm_ami" {
-  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-arm64-gp2"
-}
-
 resource "aws_security_group" "bastion" {
   name = "bastion-sg"
   description = "Allow SSH ingress traffic and allow all egress traffic"

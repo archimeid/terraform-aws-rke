@@ -63,6 +63,10 @@ resource "aws_subnet" "private_subnet_2" {
   }
 }
 
+locals {
+  private_subnets_id = [aws_subnet.private_subnet_1.id, aws_subnet.private_subnet_2.id]
+}
+
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.kubernetes.id
 

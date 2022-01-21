@@ -10,7 +10,15 @@ resource "aws_security_group" "kubernetes_nodes" {
     to_port = 22
     protocol = "tcp"
     security_groups = [ aws_security_group.bastion.id ]
-    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  # Allow all incoming traffic between nodes
+  ingress {
+    description = "Allow incoming traffic from all instances in this security group"
+    from_port = 0
+    to_port = 0
+    protocol = "tcp"
+    self = true
   }
 
   # Allow outgoing traffic

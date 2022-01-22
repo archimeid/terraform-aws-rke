@@ -17,6 +17,10 @@ variable "domain_name" {
   type = string
 }
 
+variable "certbot_email" {
+  type = string
+}
+
 locals {
   subnets_cidr_block = cidrsubnets(var.vpc_cidr_block, 8, 8, 8, 8)
   public_subnet1_cidr_block = local.subnets_cidr_block[0]

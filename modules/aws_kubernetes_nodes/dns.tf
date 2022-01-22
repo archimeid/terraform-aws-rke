@@ -18,3 +18,10 @@ resource "aws_route53_record" "kube_api" {
   ttl     = "300"
   records = [aws_eip.load_balancer.public_ip]
 }
+
+locals {
+  domain_names = [
+    aws_route53_record.ingress.name,
+    aws_route53_record.kube_api.name
+  ]
+}

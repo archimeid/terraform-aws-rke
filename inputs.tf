@@ -16,3 +16,7 @@ variable "vpc_cidr_block" {
 variable "domain_name" {
   type = string
 }
+
+variable "certbot_email" {
+  type = string
+}

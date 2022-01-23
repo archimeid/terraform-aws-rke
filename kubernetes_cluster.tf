@@ -5,4 +5,5 @@ module "aws_kubernetes_nodes" {
   aws_profile = var.aws_profile
   vpc_cidr_block = var.vpc_cidr_block
   domain_name = var.domain_name
+  certbot_email = var.certbot_email
 }

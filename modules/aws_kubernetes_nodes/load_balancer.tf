@@ -94,10 +94,10 @@ resource "null_resource" "certbot" {
       type = "ssh"
 
       bastion_host = "${aws_eip.bastion.public_ip}"
-      bastion_user = "ec2_user"
+      bastion_user = "ec2-user"
 
       host = "${aws_instance.load_balancer.private_ip}"
-      user = "ec2_user"
+      user = "ec2-user"
       private_key = file(local_file.k8s-private-key.filename)
     }
   }
